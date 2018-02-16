@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ionic Home Page
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form (ngSubmit)="logForm(part)" >    
+
+        <ion-item>
+          <ion-label>Part Name : </ion-label>
+          <ion-input type="text"  name="partname" [(ngModel)]="this.part.partName" floating></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Part Number : </ion-label>
+          <ion-input type="text"  name="partNumber" [(ngModel)]="this.part.partNumber" floating></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Part Description : </ion-label>
+          <ion-textarea  name="description"  name="partDesc" [(ngModel)]="this.part.partDesc" floating></ion-textarea>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Location : </ion-label>
+            <ion-input type="text"  name="location" [(ngModel)]="this.part.location" floating></ion-input>
+        </ion-item>
+    
+        <ion-item>
+            <ion-label>Time : </ion-label>
+            <ion-label>{{part.time}} </ion-label>
+        </ion-item>
+     
+      <button ion-button type="submit"  block>Add </button>
+     <!--  <button ion-button  (click)="uploadImage()" block>Upload Image</button> -->
+  </form>
+     
+
+  <button ion-button (click)="update()"  block>update</button>
+
+   <div *ngFor="let item of items | async">
+    <ion-list color="dark" (click) = "selectItemList(item,part)">
+      <ion-item>
+          <ion-label>{{ item.partName}} </ion-label>
+          <ion-label>{{ item.partNumber}} </ion-label>
+          <ion-label>{{ item.partDesc}} </ion-label>
+          <ion-label>{{ item.location}} </ion-label>
+          <ion-label>{{ item.time}} </ion-label>
+      </ion-item>
+    </ion-list>
+  </div> 
+  
+</ion-content>
